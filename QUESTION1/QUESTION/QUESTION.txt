@@ -1,0 +1,72 @@
+QUESTION:Define XMLHttpRequest object, and How is it used in AJAX?
+Answer:The XMLHttpRequest is built-in browser object used to interact with web servers and request data from them asynchronously without refreshing the entire page. It is a key componenet of AJAX(Asynchronous Javascript and XML) enabling application to send and receive the data in background, providing a smooth, dynamic user experience.
+
+Key features of XMLHttpRequest:
+1) Asynchronous Request : Allow data to be fetched from server without blocking the other parts of the application.
+2) HTTP Methods : It supports method like GET, POST, PUT, DELETE etc, to interact with servers.
+3) Data Format : Originally designed to handle XML, but now it can handle various formats such as JSON, plain text, and XML.
+4) Event Listeners : XMLHttpRequest can be used with event listeners like onreadystatechange to handle the response once it's available.
+
+
+In AJAX, the XMLHttpRequest object allows JavaScript to request data from the server and update parts of a webpage dynamically, without needing to reload the entire page. The basic process involves:
+
+Creating the XMLHttpRequest Object:
+To begin using AJAX, the first step is creating a new instance of XMLHttpRequest.
+
+javascript
+Copy code
+var xhr = new XMLHttpRequest();
+Opening the Request:
+Next, we use the .open() method to specify the HTTP request type (e.g., GET, POST), the URL, and whether the request should be asynchronous.
+
+javascript
+Copy code
+xhr.open("GET", "example.json", true);  // 'true' makes it asynchronous
+Sending the Request:
+Once the request is opened, the .send() method is used to actually send the request to the server.
+
+javascript
+Copy code
+xhr.send();
+Handling the Response:
+To handle the server's response, you can use the .onreadystatechange event or the .onload event. The response data can be accessed via the responseText or responseXML properties depending on the data type returned by the server.
+
+Example using .onreadystatechange:
+
+javascript
+Copy code
+xhr.onreadystatechange = function() {
+    if (xhr.readyState == 4 && xhr.status == 200) {  // 4 = done, 200 = success
+        console.log(xhr.responseText);  // Handle the response
+    }
+};
+Alternatively, you can use the .onload event:
+
+javascript
+Copy code
+xhr.onload = function() {
+    if (xhr.status == 200) {
+        console.log(xhr.responseText);  // Handle the response
+    }
+};
+
+AJAX Example using XMLHttpRequest:
+javascript
+Copy code
+// Create a new XMLHttpRequest object
+var xhr = new XMLHttpRequest();
+
+// Define the HTTP request method, URL, and whether it's asynchronous
+xhr.open("GET", "https://api.example.com/data", true);
+
+// Define what happens when the request is completed successfully
+xhr.onload = function() {
+    if (xhr.status == 200) {
+        console.log("Response received: ", xhr.responseText);
+    } else {
+        console.log("Error with request:", xhr.statusText);
+    }
+};
+
+// Send the request
+xhr.send();
