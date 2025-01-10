@@ -1,0 +1,75 @@
+QUESTION:Describe the purpose and usage of the localStorage and sessionStorage APIs in web development. Give suitable examples for each.
+Answer:localStorage and sessionStorage APIs in Web Development
+Both localStorage and sessionStorage are part of the Web Storage API. They allow developers to store key-value pairs in a user's browser to persist data on the client-side. These storage options are accessible through JavaScript and are useful for maintaining state, user preferences, and other data across different pages or sessions.
+
+1. localStorage
+Purpose:
+localStorage is used to store data persistently on the client side. The data remains even when the browser is closed and reopened. This is useful for storing data that should be available across multiple sessions (e.g., user preferences, theme settings, or authentication tokens).
+
+Usage:
+Data in localStorage is saved indefinitely until explicitly removed using the removeItem() or clear() methods.
+
+###Key Characteristics:
+1) Persistent Data: Data is not deleted when the browser is closed.
+2) Capacity: Typically 5–10 MB per domain (depends on the browser).
+3) Scope: Accessible from the same domain (same protocol, host, and port).
+Example:
+
+// Storing data
+localStorage.setItem('username', 'john_doe');
+localStorage.setItem('theme', 'dark');
+
+// Retrieving data
+let username = localStorage.getItem('username');
+let theme = localStorage.getItem('theme');
+
+console.log(username); // Output: john_doe
+console.log(theme); // Output: dark
+
+// Removing specific data
+localStorage.removeItem('theme');
+
+// Clearing all data
+localStorage.clear();
+Use Case Example:
+
+Storing user settings or preferences like a selected theme or language choice, which should persist across sessions.
+
+
+2) SessionStorage
+Purpose:
+sessionStorage is used to store data for the duration of the page session. The data is cleared when the browser tab or window is closed. This is useful for data that is only needed while the user is navigating within a single session (e.g., form data, temporary states).
+
+Usage:
+Like localStorage, data in sessionStorage is stored as key-value pairs but it is only available for the duration of the page session.
+
+Key Characteristics:
+Session-based Data: Data is lost when the tab or window is closed.
+Capacity: Similar to localStorage, typically 5–10 MB per domain.
+Scope: Data is accessible only from the same tab or window.
+Example:
+// Storing data
+sessionStorage.setItem('isLoggedIn', 'true');
+sessionStorage.setItem('cartItemCount', '3');
+
+// Retrieving data
+let isLoggedIn = sessionStorage.getItem('isLoggedIn');
+let cartItemCount = sessionStorage.getItem('cartItemCount');
+
+console.log(isLoggedIn); // Output: true
+console.log(cartItemCount); // Output: 3
+
+// Removing specific data
+sessionStorage.removeItem('cartItemCount');
+
+// Clearing all data
+sessionStorage.clear();
+Use Case Example:
+
+Storing temporary data, like the number of items in a shopping cart, that should be available during a user's session on the website.
+
+Conclusion
+a)localStorage is ideal for persisting data that needs to survive across browser sessions, like preferences, settings, or authentication tokens.
+b)sessionStorage is best used for session-specific data that should be cleared when the tab or browser window is closed, such as temporary form data or session states.
+
+
