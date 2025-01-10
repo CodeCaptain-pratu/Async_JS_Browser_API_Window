@@ -1,0 +1,42 @@
+QUESTION:What is the same-origin policy in the context of AJAX requests, and how can you work around it?
+Answer:The same origin policy(SOP) is a security measure implemented in the web browser to restrict how resources(e.g. scripts, data or cookies) can be accessed between different origin. It ensures that a web page can only make request to the same origin from which it was loaded, where an origin is defined by the combination of 
+1) Protocol (e.g. http,https)
+2) Domain (e.g. example.com)
+3) Port (e.g.80 ,443)
+
+For example a page loaded from https://example.com can make request to https://example.com/api, but not to https://otherdomain.com or https://example.com:8080
+
+
+Same Origin Policy in the context of AJAX
+When making AJAX request(e.g. using XMLHttpRequest or fetch) SOP prevents from retrieving data from a different origin unless specific measures are taken to allow such interaction 
+
+Workarounds for Same Origin Policy
+1. JSONP(JSON with Padding): JSONP is a technique that allows to bypass SOP by wrapping
+the JSON data in a JavaScript function call. The function is defined in the script tag of the page, and the JSON data is passed as a parameter to the function. This way the browser executes the function and the data is accessible to the page.
+2. CORS(Cross-Origin Resource Sharing): CORS is a mechanism that allows servers to indicate whether they are willing to serve resources to requests from specific domains. The server includes specific headers in the response to indicate which domains are allowed to make requests. The browser then checks these headers and allows the request if the domain is listed.
+3. Proxy Server: A proxy server can be used to make requests on behalf of the client.
+The client makes a request to the proxy server, which then makes the request to the
+server on behalf of the client. The proxy server can then forward the response back to
+the client.
+4. Server-Side Includes: Server-side includes allow the server to include content from
+another origin in the response. This can be used to include data from another origin
+in the response.
+5. PostMessage API: The postMessage API allows a page to send messages to other
+windows or frames that are from the same origin. This can be used to communicate
+with other windows or frames that are from the same origin.
+6. WebSockets: WebSockets allow for bidirectional, real-time communication between
+the client and the server. This can be used to bypass SOP.
+7. Node.js: Node.js can be used to create a server that can make requests on behalf
+of the client. This can be used to bypass SOP.
+8. Reverse Proxy: A reverse proxy can be used to make requests on behalf of the client.
+The client makes a request to the reverse proxy, which then makes the request to the
+server on behalf of the client. The reverse proxy can then forward the response back
+to the client.
+9. Apache Reverse Proxy: Apache reverse proxy can be used to make requests on behalf
+of the client. The client makes a request to the Apache reverse proxy, which then
+makes the request to the server on behalf of the client. The Apache reverse proxy
+can then forward the response back to the client.
+10. NGINX Reverse Proxy: NGINX reverse proxy can be used to make requests on
+behalf of the client. The client makes a request to the NGINX reverse proxy, which
+then makes the request to the server on behalf of the client. The NGINX reverse
+proxy can then forward the response back to the client.
