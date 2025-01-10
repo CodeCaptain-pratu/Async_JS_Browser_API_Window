@@ -1,0 +1,124 @@
+QUESTION:List and briefly explain some common Browser APIs available to JavaScript developers.
+Answer:
+1)Document Object Model (DOM) API
+Purpose: Manipulate the structure and content of the webpage.
+
+Examples:
+document.getElementById("id"): Selects an element by its ID.
+document.createElement("div"): Creates a new HTML element.
+element.innerHTML: Modifies the content of an element.
+
+2)Fetch API
+Purpose: Perform network requests to fetch resources (e.g., data from a server).
+Example:
+fetch('https://api.example.com/data')
+    .then(response => response.json())
+    .then(data => console.log(data))
+    .catch(error => console.error(error));
+Advantage: Simplifies AJAX requests, replacing older XMLHttpRequest
+
+3) Geolocation API
+Purpose: Access the user's geographical location.
+Example:
+
+navigator.geolocation.getCurrentPosition(
+    position => console.log(position.coords),
+    error => console.error(error)
+);
+Use Case: Location-based services like maps or weather apps.
+
+4) Web Storage API
+Purpose: Store key-value pairs locally in the browser.
+Types:
+LocalStorage: Persistent storage that remains even after the browser is closed.
+SessionStorage: Storage tied to a single session (cleared when the tab is closed).
+Example:
+localStorage.setItem('key', 'value');
+console.log(localStorage.getItem('key'));
+
+5) Canvas API
+Purpose: Draw graphics and animations directly on a <canvas> element.
+Example:
+const canvas = document.getElementById('myCanvas');
+const ctx = canvas.getContext('2d');
+ctx.fillStyle = 'red';
+ctx.fillRect(10, 10, 100, 100);
+Use Case: Game development, data visualizations, etc.
+
+6) Web Workers API
+Purpose: Run JavaScript code in the background, separate from the main thread.
+Example:
+const worker = new Worker('worker.js');
+worker.postMessage('Start');
+worker.onmessage = event => console.log(event.data);
+Use Case: Perform computationally heavy tasks without blocking the UI.
+
+7) Notifications API
+Purpose: Display system-level notifications to the user.
+Example:
+Notification.requestPermission().then(permission => {
+    if (permission === 'granted') {
+        new Notification('Hello, world!');
+    }
+});
+
+8) Device Orientation API
+Purpose: Access information about the physical orientation of a device.
+Example:
+window.addEventListener('deviceorientation', event => {
+    console.log(event.alpha, event.beta, event.gamma);
+});
+
+9) Clipboard API
+Purpose: Copy to or paste from the clipboard.
+Example:
+navigator.clipboard.writeText('Copied text!');
+navigator.clipboard.readText().then(text => console.log(text));
+
+10) WebSockets API
+Purpose: Enable real-time, two-way communication between the client and the server.
+Example:
+const socket = new WebSocket('wss://example.com/socket');
+socket.onmessage = event => console.log(event.data);
+
+11) History API
+Purpose: Manage the browser history stack.
+Example:
+history.pushState({ page: 1 }, 'Title 1', '/page1');
+history.back();
+
+12) Audio/Video API (Media APIs)
+Purpose: Access and control audio and video elements.
+Example:
+const video = document.querySelector('video');
+video.play();
+
+13) File API
+Purpose: Work with files uploaded by the user.
+Example:
+const input = document.querySelector('input[type="file"]');
+input.addEventListener('change', event => {
+    const file = event.target.files[0];
+    console.log(file.name);
+});
+
+14) Intersection Observer API
+Purpose: Observe changes in the intersection of an element with its ancestor or viewport.
+Example:
+const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => console.log(entry.isIntersecting));
+});
+observer.observe(document.querySelector('#target'));
+
+Conclusion
+These APIs empower JavaScript developers to build dynamic, interactive, and feature-rich web applications. Choosing the right API depends on the specific requirements of your application.
+
+
+
+
+
+
+
+
+
+
